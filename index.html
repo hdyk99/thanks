@@ -6,53 +6,60 @@
 <title>Thank you</title>
 
 <style>
-
 body{
     margin:0;
-    font-family: sans-serif;
+    font-family:sans-serif;
     background-color:#f4f4f4;
 }
 
+/* カード */
 .container{
     max-width:700px;
     margin:100px auto;
     background:white;
     padding:40px;
-    border-radius:10px;
+    border-radius:12px;
     box-shadow:0 10px 25px rgba(0,0,0,0.1);
     text-align:center;
+
+    /* ふわっと表示 */
+    opacity:0;
+    transform:translateY(50px);
+    animation:fadeUp 2s ease forwards;
 }
 
+/* タイトル */
 h1{
     font-size:36px;
     margin-bottom:30px;
-    opacity:0;
-    animation:fadeUp 1s ease forwards;
 }
 
+/* 文章 */
 p{
     font-size:18px;
     line-height:1.8;
 }
 
+/* 画像 */
 .thanks-image{
     width:100%;
     margin-top:30px;
     border-radius:10px;
-
-    opacity:0;
-    transform:translateY(20px);
-    animation:fadeUp 1.5s ease forwards;
 }
 
+/* アニメーション */
 @keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
-
 </style>
+
 </head>
 
 <body>

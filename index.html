@@ -26,11 +26,30 @@ body{
 h1{
     font-size:36px;
     margin-bottom:30px;
+    opacity:0;
+    animation:fadeUp 1s ease forwards;
 }
 
 p{
     font-size:18px;
     line-height:1.8;
+}
+
+.thanks-image{
+    width:100%;
+    margin-top:30px;
+    border-radius:10px;
+
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp 1.5s ease forwards;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
 </style>
@@ -55,6 +74,8 @@ p{
 
 本当にありがとうございました！
 </p>
+
+<img src="photo.jpg" class="thanks-image">
 
 </div>
 

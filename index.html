@@ -1,70 +1,80 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
 <meta charset="UTF-8">
 <title>Thank you</title>
 
 <style>
+
 body{
     margin:0;
+    background:#f4f4f4;
     font-family:sans-serif;
-    background-color:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* 手紙全体 */
+.letter{
+    width:600px;
+    perspective:1000px;
 }
 
 /* カード */
-.container{
-    max-width:700px;
-    margin:100px auto;
+.card{
+    width:100%;
     background:white;
-    padding:40px;
-    border-radius:12px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-    text-align:center;
-
-    /* ふわっと表示 */
-    opacity:0;
-    transform:translateY(50px);
-    animation:fadeUp 2s ease forwards;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    transform-origin:top;
+    transform:rotateX(-90deg);
+    animation:openLetter 2s ease forwards;
 }
 
-/* タイトル */
+/* 中身 */
+.content{
+    padding:40px;
+    text-align:center;
+}
+
 h1{
-    font-size:36px;
     margin-bottom:30px;
 }
 
-/* 文章 */
 p{
-    font-size:18px;
     line-height:1.8;
+    font-size:18px;
 }
 
-/* 画像 */
-.thanks-image{
+img{
     width:100%;
     margin-top:30px;
     border-radius:10px;
 }
 
-/* アニメーション */
-@keyframes fadeUp{
-    from{
+/* 開くアニメーション */
+@keyframes openLetter{
+    0%{
+        transform:rotateX(-90deg);
         opacity:0;
-        transform:translateY(50px);
     }
-    to{
+    100%{
+        transform:rotateX(0deg);
         opacity:1;
-        transform:translateY(0);
     }
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="letter">
+<div class="card">
+
+<div class="content">
 
 <h1>ありがとうございました！</h1>
 
@@ -82,8 +92,11 @@ p{
 本当にありがとうございました！
 </p>
 
-<img src="photo.jpg" class="thanks-image">
+<img src="photo.jpg">
 
+</div>
+
+</div>
 </div>
 
 </body>

@@ -6,6 +6,15 @@
 
 <style>
 
+/* ===== サイズ設定（ここだけ変えればOK） ===== */
+
+:root{
+    --card-width: 700px;
+    --card-half-height: 400px;
+}
+
+/* ============================================ */
+
 body{
     margin:0;
     background:#f4f4f4;
@@ -16,52 +25,91 @@ body{
     height:100vh;
 }
 
-/* 手紙全体 */
-.letter{
-    width:600px;
-    perspective:1000px;
-}
-
-/* カード */
 .card{
-    width:100%;
-    background:white;
-    border-radius:10px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    transform-origin:top;
-    transform:rotateX(-90deg);
-    animation:openLetter 2s ease forwards;
+    width:var(--card-width);
+    height:var(--card-half-height);
+    position:relative;
+    perspective:1200px;
+
+    animation:expandCard 0.8s ease forwards;
+    animation-delay:2s;
 }
 
-/* 中身 */
+.base{
+    position:absolute;
+    top:var(--card-half-height);
+    width:100%;
+    height:var(--card-half-height);
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.cover{
+    position:absolute;
+    top:var(--card-half-height);
+    width:100%;
+    height:var(--card-half-height);
+    background:white;
+
+    transform-origin:top;
+    animation:openCard 2s ease forwards;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
 .content{
+    position:absolute;
+    top:0;
+    width:100%;
+    height:calc(var(--card-half-height) * 2);
     padding:40px;
+    box-sizing:border-box;
     text-align:center;
+
+    opacity:0;
+    animation:showContent 1s ease forwards;
+    animation-delay:2.2s;
 }
 
 h1{
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 
 p{
-    line-height:1.8;
     font-size:18px;
+    line-height:1.8;
 }
 
 img{
     width:100%;
-    margin-top:30px;
-    border-radius:10px;
+    margin-top:20px;
 }
 
-/* 開くアニメーション */
-@keyframes openLetter{
-    0%{
-        transform:rotateX(-90deg);
+/* アニメーション */
+
+@keyframes openCard{
+    from{
+        transform:rotateX(0deg);
+    }
+    to{
+        transform:rotateX(180deg);
+    }
+}
+
+@keyframes expandCard{
+    from{
+        height:var(--card-half-height);
+    }
+    to{
+        height:calc(var(--card-half-height) * 2);
+    }
+}
+
+@keyframes showContent{
+    from{
         opacity:0;
     }
-    100%{
-        transform:rotateX(0deg);
+    to{
         opacity:1;
     }
 }
@@ -71,32 +119,30 @@ img{
 
 <body>
 
-<div class="letter">
 <div class="card">
+
+<div class="cover"></div>
+
+<div class="base"></div>
 
 <div class="content">
 
-<h1>ありがとうございました！</h1>
+<h1>２年間ありがとうございました！</h1>
 
 <p>
-アルバイトを卒業することになりました。<br><br>
 
-ここで皆さんと一緒に働けたこと、  
+３月でジョリパを卒業することになりました。<br><br>
+ここで皆さんと一緒に働けたこと、
 本当に感謝しています。<br><br>
-
-至らない点も多かったと思いますが、  
-支えていただきありがとうございました。<br><br>
-
-この経験をこれからの人生に活かしていきます。<br><br>
-
-本当にありがとうございました！
+いろんな方とたくさん話せて楽しかったし、多くを学ぶことが出来ました！<br><br>
+いままで本当にありがとうございました。<br><br>
+　　　　　　　ありぞのより
 </p>
 
 <img src="photo.jpg">
 
 </div>
 
-</div>
 </div>
 
 </body>

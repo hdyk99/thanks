@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ありがとうございました</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: "Hiragino Mincho ProN", serif;
+    background:#f5f5f5;
+    overflow:hidden;
+}
+
+/* 手紙 */
+
+.letter{
+    position:relative;
+    max-width:500px;
+    margin:80px auto;
+    background:white;
+    padding:40px;
+    line-height:1.9;
+    font-size:16px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    border-radius:6px;
+    z-index:2;
+}
+
+.title{
+    text-align:center;
+    font-size:22px;
+    margin-bottom:30px;
+}
+
+/* 桜 */
+
+.sakura{
+    position:fixed;
+    top:-10px;
+    font-size:18px;
+    animation: fall linear infinite;
+    z-index:10;
+}
+
+@keyframes fall{
+    0%{
+        transform:translate(0vw,-10vh) rotate(0deg);
+        opacity:1;
+    }
+
+    25%{
+        transform:translate(2vw,25vh) rotate(90deg);
+    }
+
+    50%{
+        transform:translate(-2vw,50vh) rotate(180deg);
+    }
+
+    75%{
+        transform:translate(2vw,75vh) rotate(270deg);
+    }
+
+    100%{
+        transform:translate(-1vw,110vh) rotate(360deg);
+        opacity:0.7;
+    }
+}
+
+.pasta{
+    position:fixed;
+    font-size:28px;
+    animation: fall linear forwards;
+    pointer-events:none;
+    z-index:20;
+}
+
+@keyframes pastaPop{
+    0%{
+        transform:scale(0.5);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(1.5) translateY(-40px);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="letter">
+
+<div class="title">ジョリーパスタ福岡石丸店の皆さんへ</div>
+
+2年間、本当にお世話になりました。<br><br>
+
+楽しく働くことができ、ここで過ごした時間は自分にとって大切な思い出になりました。<br><br>
+
+福岡で就職しますので、たまに食べに遊びに来たいと思います。<br><br>
+
+2年間、本当にありがとうございました。<br><br>
+
+　　　　　　　　　　　　　　有薗より
+
+</div>
+
+<script>
+
+function createSakura(){
+
+    const sakura=document.createElement("div")
+    sakura.classList.add("sakura")
+    sakura.innerHTML="🌸"
+
+    sakura.style.left=Math.random()*100+"vw"
+    sakura.style.animationDuration=5+Math.random()*5+"s"
+    sakura.style.fontSize=12+Math.random()*14+"px"
+
+    document.body.appendChild(sakura)
+
+    setTimeout(()=>{
+        sakura.remove()
+    },10000)
+
+}
+
+setInterval(createSakura,300)
+
+
+document.addEventListener("click",function(e){
+
+    const foods=["🍝","🍕"]
+    const food=foods[Math.floor(Math.random()*foods.length)]
+
+    const item=document.createElement("div")
+    item.classList.add("pasta")
+    item.innerHTML=food
+
+    item.style.left=e.clientX+"px"
+    item.style.top=e.clientY+"px"
+
+    item.style.animationDuration=7+Math.random()*5+"s"
+
+    document.body.appendChild(item)
+
+    setTimeout(()=>{
+        item.remove()
+    },12000)
+
+})
+
+function createPasta(x,y){
+
+    const pasta=document.createElement("div")
+    pasta.classList.add("pasta")
+    pasta.innerHTML="🍝"
+
+    pasta.style.left=x+"px"
+    pasta.style.top=y+"px"
+
+    document.body.appendChild(pasta)
+
+    setTimeout(()=>{
+        pasta.remove()
+    },1000)
+
+}
+
+function createTapSakura(x,y){
+
+    const sakura=document.createElement("div")
+    sakura.classList.add("pasta")
+    sakura.innerHTML="🌸"
+
+    sakura.style.left=(x+20)+"px"
+    sakura.style.top=(y+10)+"px"
+
+    document.body.appendChild(sakura)
+
+    setTimeout(()=>{
+        sakura.remove()
+    },1000)
+
+}
+</script>
+
+</body>
+</html>

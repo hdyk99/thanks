@@ -3,219 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank you</title>
+<meta name="robots" content="noindex">
+<title>ありがとうございました</title>
 
 <style>
 
-:root{
-    --card-width:700px;
-    --card-half-height:600px;
-}
-
 body{
     margin:0;
-    background:#f4f4f4;
-    font-family:sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+    font-family: "Hiragino Mincho ProN", serif;
+    background:#f5f5f5;
+    overflow:hidden;
 }
-
-/* スマホ対応 */
-
-@media (max-width:768px){
-
-:root{
-    --card-width:90vw;
-    --card-half-height:60vh;
-}
-
-.content{
-    padding:30px;
-}
-
-p{
-    font-size:16px;
-    line-height:28px;
-    padding-left:20px;
-}
-
-h1{
-    font-size:22px;
-}
-
-}
-
-/* カード */
-
-.card{
-    width:var(--card-width);
-    height:var(--card-half-height);
-    position:relative;
-    perspective:1200px;
-    cursor:pointer;
-}
-
-/* 封筒下 */
-
-.base{
-    position:absolute;
-    top:var(--card-half-height);
-    width:100%;
-    height:var(--card-half-height);
-    background:white;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-/* 封筒フタ */
-
-.cover{
-    position:absolute;
-    top:var(--card-half-height);
-    width:100%;
-    height:var(--card-half-height);
-    background:white;
-    transform-origin:top;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
 
 /* 手紙 */
 
-.content{
-    position:absolute;
-    top:0;
-    width:100%;
-    height:calc(var(--card-half-height) * 2);
-    padding:60px;
-    box-sizing:border-box;
-    opacity:0;
+.letter{
+    position:relative;
+    max-width:500px;
+    margin:80px auto;
+    background:white;
+    padding:40px;
+    line-height:1.9;
+    font-size:16px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    border-radius:6px;
+    z-index:2;
 }
 
-h1{
+.title{
     text-align:center;
+    font-size:22px;
     margin-bottom:30px;
 }
 
-p{
+/* 桜 */
+
+.sakura{
+    position:fixed;
+    top:-10px;
     font-size:18px;
-    line-height:32px;
-    text-align:left;
-    padding-left:40px;
-
-    background-image: repeating-linear-gradient(
-        to bottom,
-        transparent,
-        transparent 31px,
-        #dddddd 32px
-    );
+    animation: fall linear infinite;
+    z-index:1;
 }
 
-img{
-    width:100%;
-    margin-top:30px;
-}
-
-/* シール */
-
-.seal{
-    position:absolute;
-    top:calc(var(--card-half-height) + 120px);
-    left:50%;
-    transform:translateX(-50%);
-
-    width:70px;
-    height:70px;
-
-    background:#c0392b;
-    border-radius:50%;
-
-    box-shadow:0 5px 10px rgba(0,0,0,0.2);
-    z-index:5;
-}
-
-/* 宛名 */
-
-.address{
-    position:absolute;
-    top:calc(var(--card-half-height) + 40px);
-    width:100%;
-    text-align:center;
-
-    font-size:26px;
-    letter-spacing:2px;
-    color:#444;
-}
-
-/* Tap表示 */
-
-.tap{
-    position:absolute;
-    top:calc(var(--card-half-height) + 200px);
-    width:100%;
-    text-align:center;
-    font-size:22px;
-    color:#666;
-
-    animation:blink 1.5s infinite;
-}
-
-/* 開いた状態 */
-
-.card.open{
-    animation:expandCard 0.8s ease forwards;
-}
-
-.card.open .cover{
-    animation:openCard 2s ease forwards;
-}
-
-.card.open .content{
-    animation:showContent 1s ease forwards;
-    animation-delay:2s;
-}
-
-.card.open .seal{
-    animation:removeSeal 0.6s ease forwards;
-}
-
-.card.open .tap{
-    display:none;
-}
-
-/* アニメーション */
-
-@keyframes openCard{
-    from{transform:rotateX(0deg);}
-    to{transform:rotateX(180deg);}
-}
-
-@keyframes expandCard{
-    from{height:var(--card-half-height);}
-    to{height:calc(var(--card-half-height) * 2);}
-}
-
-@keyframes showContent{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-@keyframes removeSeal{
-    from{
-        transform:translateX(-50%) scale(1);
+@keyframes fall{
+    0%{
+        transform:translateY(-10vh) rotate(0deg);
         opacity:1;
     }
-    to{
-        transform:translateX(-50%) scale(0.3);
-        opacity:0;
-    }
-}
 
-@keyframes blink{
-    0%{opacity:0.2;}
-    50%{opacity:1;}
-    100%{opacity:0.2;}
+    100%{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0.7;
+    }
 }
 
 </style>
@@ -223,44 +63,45 @@ img{
 
 <body>
 
-<div class="card" id="card">
+<div class="letter">
 
-<div class="seal"></div>
+<div class="title">ジョリーパスタ福岡石丸店の皆さんへ</div>
 
-<div class="address">みんなへ</div>
+2年間、本当にお世話になりました。<br><br>
 
-<div class="tap">Tap to open</div>
+楽しく働くことができ、ここで過ごした時間は  
+自分にとって大切な思い出になりました。<br><br>
 
-<div class="cover"></div>
+福岡で就職しますので、
+また食べに遊びに来たいと思います。<br><br>
 
-<div class="base"></div>
+2年間、本当にありがとうございました。<br><br>
 
-<div class="content">
-
-<h1>２年間ありがとうございました！</h1>
-
-<p>
-３月でジョリパを卒業することになりました。<br><br>
-ここで皆さんと一緒に働けたこと、
-本当に感謝しています。<br><br>
-いろんな方とたくさん話せて楽しかったし、多くを学ぶことが出来ました！<br><br>
-いままで本当にありがとうございました。<br><br>
-　　　　　　　　　　　　　　　　　　ありぞのより
-</p>
-
-<img src="photo.jpg">
-
-</div>
+有薗より
 
 </div>
 
 <script>
 
-const card = document.getElementById("card");
+function createSakura(){
 
-card.addEventListener("click", () => {
-    card.classList.add("open");
-});
+    const sakura=document.createElement("div")
+    sakura.classList.add("sakura")
+    sakura.innerHTML="🌸"
+
+    sakura.style.left=Math.random()*100+"vw"
+    sakura.style.animationDuration=5+Math.random()*5+"s"
+    sakura.style.fontSize=12+Math.random()*14+"px"
+
+    document.body.appendChild(sakura)
+
+    setTimeout(()=>{
+        sakura.remove()
+    },10000)
+
+}
+
+setInterval(createSakura,300)
 
 </script>
 

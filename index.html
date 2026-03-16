@@ -48,16 +48,47 @@ body{
 
 @keyframes fall{
     0%{
-        transform:translateY(-10vh) rotate(0deg);
+        transform:translate(0vw,-10vh) rotate(0deg);
         opacity:1;
     }
 
+    25%{
+        transform:translate(2vw,25vh) rotate(90deg);
+    }
+
+    50%{
+        transform:translate(-2vw,50vh) rotate(180deg);
+    }
+
+    75%{
+        transform:translate(2vw,75vh) rotate(270deg);
+    }
+
     100%{
-        transform:translateY(110vh) rotate(360deg);
+        transform:translate(-1vw,110vh) rotate(360deg);
         opacity:0.7;
     }
 }
 
+.pasta{
+    position:fixed;
+    font-size:28px;
+    animation: fall linear forwards;
+    pointer-events:none;
+    z-index:20;
+}
+
+@keyframes pastaPop{
+    0%{
+        transform:scale(0.5);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(1.5) translateY(-40px);
+        opacity:0;
+    }
+}
 </style>
 </head>
 
@@ -103,6 +134,59 @@ function createSakura(){
 
 setInterval(createSakura,300)
 
+
+document.addEventListener("click",function(e){
+
+    const pasta=document.createElement("div")
+    pasta.classList.add("pasta")
+    pasta.innerHTML="🍝"
+
+    pasta.style.left=e.clientX+"px"
+    pasta.style.top=e.clientY+"px"
+
+    pasta.style.animationDuration=7+Math.random()*5+"s"
+
+    document.body.appendChild(pasta)
+
+    setTimeout(()=>{
+        pasta.remove()
+    },12000)
+
+})
+
+function createPasta(x,y){
+
+    const pasta=document.createElement("div")
+    pasta.classList.add("pasta")
+    pasta.innerHTML="🍝"
+
+    pasta.style.left=x+"px"
+    pasta.style.top=y+"px"
+
+    document.body.appendChild(pasta)
+
+    setTimeout(()=>{
+        pasta.remove()
+    },1000)
+
+}
+
+function createTapSakura(x,y){
+
+    const sakura=document.createElement("div")
+    sakura.classList.add("pasta")
+    sakura.innerHTML="🌸"
+
+    sakura.style.left=(x+20)+"px"
+    sakura.style.top=(y+10)+"px"
+
+    document.body.appendChild(sakura)
+
+    setTimeout(()=>{
+        sakura.remove()
+    },1000)
+
+}
 </script>
 
 </body>
